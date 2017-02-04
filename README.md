@@ -1,7 +1,5 @@
-TIE-21106 Sowtware Engineering Methodology, Spring 2017 
-Created 22.01.2017 by Tensu. 
+TIE-21106 Software Engineering Methodology, Spring 2017 
 
-This is just a text file, as such is needed at TUT GitLab Repolainen. 
 
-Havu fun with your Project Assignment game; River Raid. 
+The awesome version of River Raid, 2017.
 
