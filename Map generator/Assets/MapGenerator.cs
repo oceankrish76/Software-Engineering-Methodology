@@ -33,8 +33,7 @@ public class MapGenerator : MonoBehaviour {
             SmoothMap();
         }
     }
-
-
+		
     void RandomFillMap() {
         if (useRandomSeed) {
             seed = Time.time.ToString();
@@ -85,8 +84,7 @@ public class MapGenerator : MonoBehaviour {
 
         return wallCount;
     }
-
-
+		
     void OnDrawGizmos() {
         if (map != null) {
             for (int x = 0; x < width; x ++) {
