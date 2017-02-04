@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//Arno
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,15 +15,20 @@ public class PlayerInput : MonoBehaviour {
 
 
     void FixedUpdate () {
-
-        if(Input.GetButton("Horizontal"))
-        {
-            transform.localPosition += Input.GetAxis("Horizontal") * transform.right * Time.deltaTime * moveSpeed;
-        }
         
-        if(Input.GetButton("Vertical"))
-        {
-            transform.localPosition += Input.GetAxis("Vertical") * transform.forward * Time.deltaTime * moveSpeed;
-        }
+        //TODO: check if player is alive
+            if (Input.GetButton("Horizontal"))
+            {
+                transform.localPosition += Input.GetAxis("Horizontal") * transform.right * Time.deltaTime * moveSpeed;
+                GetComponentInChildren<PlayerRotation>().RotateModel();
+            }
+
+            if (Input.GetButton("Vertical"))
+            {
+                transform.localPosition += Input.GetAxis("Vertical") * transform.forward * Time.deltaTime * moveSpeed;
+                GetComponentInChildren<PlayerRotation>().ResetRotation();
+            }
+
+
 	}
 }
