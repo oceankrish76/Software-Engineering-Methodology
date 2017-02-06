@@ -7,12 +7,24 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
     public float moveSpeed = 1.0f;
+    public Transform shotSpawn;
+
+    public float fireRate = 0f;
+    private float nextFire;
 
 	// Use this for initialization
 	void Start () {
 		
 	}
 
+    void Update()
+    {
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(GetComponent<PlayerWeapons>().availableWeapons.defaultWeapon, shotSpawn.position, shotSpawn.rotation);
+        }
+    }
 
     void FixedUpdate () {
         

@@ -5,15 +5,12 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour {
 
     public float rotationSpeed = 30.0f;
-	// Use this for initialization
+
+
+	// Ensure correct spawning rotation
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        transform.localEulerAngles = new Vector3(0, 180, 0);
+    }
 
     public void ResetRotation()
     {
