@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasicPickup : MonoBehaviour {
 
+   public GameObject explosion;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -22,5 +24,16 @@ public class BasicPickup : MonoBehaviour {
 
             Destroy(gameObject);
         }
+
+        if(other.gameObject.tag == "Bullets")
+        {
+            GameObject particles = Instantiate(explosion, transform.position, transform.rotation);
+       
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
+
+
+
 }

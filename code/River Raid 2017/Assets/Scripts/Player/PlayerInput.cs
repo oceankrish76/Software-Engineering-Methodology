@@ -6,16 +6,20 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
 
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 50.0f;
+    public float rotationSpeed = 1.0f;
     public Transform shotSpawn;
 
-    public float fireRate = 0f;
+    public float fireRate = 0.0f;
     private float nextFire;
+
+    Rigidbody rigidbody;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        rigidbody = GetComponent<Rigidbody>();
+
+    }
 
     void Update()
     {
@@ -27,20 +31,17 @@ public class PlayerInput : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        
+
         //TODO: check if player is alive
-            if (Input.GetButton("Horizontal"))
-            {
-                transform.localPosition += Input.GetAxis("Horizontal") * transform.right * Time.deltaTime * moveSpeed;
-                GetComponentInChildren<PlayerRotation>().RotateModel();
-            }
 
-            if (Input.GetButton("Vertical"))
-            {
-                transform.localPosition += Input.GetAxis("Vertical") * transform.forward * Time.deltaTime * moveSpeed;
-                GetComponentInChildren<PlayerRotation>().ResetRotation();
-            }
+        float moveHorizontally = Input.GetAxis("Horizontal");
+        float moveVertically = Input.GetAxis("Vertical");
 
+        Vector3 movement = new Vector3(moveHorizontally, 0.0f, moveVertically);
+        rigidbody.velocity = movement * moveSpeed;
 
-	}
+        rigidbody.position = new Vector3(rigidbody.position.x, 0.0f, rigidbody.position.z);
+
+        rigidbody.rotation = Quaternion.Euler(0.0f, 180.0f, rigidbody.velocity.x * rotationSpeed);
+    }
 }
