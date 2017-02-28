@@ -13,13 +13,16 @@ public class FuelGauge : MonoBehaviour
     {
         fuelGauge = GetComponent<Slider>();
         manager = Object.FindObjectOfType<SimpleGameManager>();
-        Debug.Log(manager);
     }
 
     // Update is called once per frame
     void Update()
     {
-        fuelGauge.value = manager.GetComponent<SimpleGameManager>().PlayerFuel;
+        if(manager)
+        {
+            fuelGauge.value = manager.GetComponent<SimpleGameManager>().PlayerFuel;
+        }
+     
     }
 
 

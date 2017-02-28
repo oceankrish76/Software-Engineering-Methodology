@@ -16,7 +16,10 @@ public class LevelColliderBehaviour : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-
+        if(other.tag == "Player")
+        {
+            FindObjectOfType<SimpleGameManager>().GetComponent<SimpleGameManager>().PlayerLives = -1;
+        }
             Destroy(other.gameObject);
 
     }

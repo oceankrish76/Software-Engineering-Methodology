@@ -4,15 +4,25 @@ using System.Collections;
 // Game States
 public enum GameState { INTRO, MAIN_MENU, PAUSED, GAME, CREDITS, HELP }
 
-public delegate void OnStateChangeHandler();
+
+//Event delegates
+public delegate void OnStateChangeHandler(GameState state);
+public delegate void OnPlayerLivesChanged(int lives);
 
 public class SimpleGameManager : MonoBehaviour
 {
-    public static SimpleGameManager instance = null;
+
+    //Event delegates
     public event OnStateChangeHandler OnStateChange;
+    public event OnPlayerLivesChanged OnLivesChange;
+
+
+    public static SimpleGameManager instance = null;
     public GameState gameState { get; private set; }
 
+    //Gameplay variables
     private float playerFuel;
+    private int playerLives;
 
     void Awake()
     {
@@ -27,7 +37,10 @@ public class SimpleGameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+
+        //Initializing private variables
         playerFuel = 100f;
+        playerLives = 3;
         DontDestroyOnLoad(gameObject);
 
     }
@@ -57,10 +70,23 @@ public class SimpleGameManager : MonoBehaviour
 
     }
 
+    public int PlayerLives
+    {
+        get
+        {
+            return playerLives;
+        }
+        set
+        {
+            playerLives += value;
+            OnLivesChange(playerLives);
+        }
+    }
+
     public void SetGameState(GameState state)
     {
         gameState = state;
-        OnStateChange();
+       // OnStateChange(state);
     }
 
     public void OnApplicationQuit()

@@ -13,11 +13,11 @@ public class PlayerInput : MonoBehaviour {
     public float fireRate = 0.0f;
     private float nextFire;
 
-    Rigidbody rigidbody;
+    Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
 
     }
 
@@ -38,10 +38,10 @@ public class PlayerInput : MonoBehaviour {
         float moveVertically = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontally, 0.0f, moveVertically);
-        rigidbody.velocity = movement * moveSpeed;
+        rb.velocity = movement * moveSpeed;
 
-        rigidbody.position = new Vector3(rigidbody.position.x, 0.0f, rigidbody.position.z);
+        rb.position = new Vector3(rb.position.x, 0.0f, rb.position.z);
 
-        rigidbody.rotation = Quaternion.Euler(0.0f, 180.0f, rigidbody.velocity.x * rotationSpeed);
+        rb.rotation = Quaternion.Euler(0.0f, 180.0f, rb.velocity.x * rotationSpeed);
     }
 }

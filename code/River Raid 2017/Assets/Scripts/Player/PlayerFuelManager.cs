@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFuelManage : MonoBehaviour {
+public class PlayerFuelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
