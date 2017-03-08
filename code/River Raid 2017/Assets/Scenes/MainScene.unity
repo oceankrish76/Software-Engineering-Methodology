@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 114903598}
   - component: {fileID: 114903600}
   - component: {fileID: 114903599}
-  - component: {fileID: 114903602}
+  - component: {fileID: 114903601}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -240,7 +240,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114903595}
   m_Mesh: {fileID: 0}
---- !u!114 &114903602
+--- !u!114 &114903601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}

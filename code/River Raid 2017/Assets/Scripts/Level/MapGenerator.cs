@@ -108,7 +108,10 @@ public class MapGenerator : MonoBehaviour {
 		return wallCount;
 	}
 
-	void AddColliders (){
+	//public GameObject RiverBankCollider;
+	//BoxCollider[] BoxCollider;
+	//int i = 0;
+	public void AddColliders (){
 		for (int x = 0; x < map.GetLength (0); x++) {
 			for (int y = 0; y < map.GetLength (1); y++) {
 				if (map[x,y] == 1) {
@@ -116,13 +119,19 @@ public class MapGenerator : MonoBehaviour {
 					boxCollider.center = new Vector3 (x - width / 2, -1f, y - height / 2);
 					boxCollider.size = Vector3.one;
 					boxCollider.isTrigger = true;
+					//Instantiate(RiverBankCollider, new Vector3 (x - width / 2, -1f, y - height / 2), Quaternion.identity);
+					//RiverBankCollider.transform.parent = GameObject.Find ("MapGenerator").transform;
 				}
 			}
 		}
 	}
 
-	void ClearMapColliders () {
-		//BoxCollider AllColliders = FindObjectOfType<BoxCollider> ();
+	public void ClearMapColliders () {
+		//BoxCollider[] AllColliders = FindObjectOfType<BoxCollider> ();
+		BoxCollider[] AllColliders = gameObject.GetComponentsInChildren< BoxCollider >();
+		foreach (BoxCollider _collider in AllColliders) {
+			Destroy (_collider);
+		}
 		Debug.Log ("CLeared");
 
 	}
