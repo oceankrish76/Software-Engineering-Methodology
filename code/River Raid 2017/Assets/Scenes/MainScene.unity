@@ -173,9 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 60
   height: 85
-  seed: 
-  useRandomSeed: 1
-  randomFillPercent: 38
+  seed: River raid
+  useRandomSeed: 0
+  randomFillPercent: 50
 --- !u!4 &114903597
 Transform:
   m_ObjectHideFlags: 0

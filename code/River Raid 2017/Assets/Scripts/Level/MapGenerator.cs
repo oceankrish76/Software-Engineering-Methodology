@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+[RequireComponent (typeof(MeshGenerator))]
 public class MapGenerator : MonoBehaviour {
 
 	public int width;
@@ -13,16 +14,17 @@ public class MapGenerator : MonoBehaviour {
 	[Range(0,100)]
 	public int randomFillPercent;
 
-	int[,] map;
+	public int[,] map;
 
 	void Start() {
 		GenerateMap();
 	}
 
 	void Update() {
-		if (Input.GetMouseButtonDown(0)) {
-			GenerateMap();
-		}
+		UpdateMap ();
+		/*if (Input.GetMouseButtonDown(0)) {
+			UpdateMap ();
+		}*/
 	}
 
 	void GenerateMap() {
@@ -31,17 +33,17 @@ public class MapGenerator : MonoBehaviour {
 
 		ClearMapColliders ();
 
-		for (int i = 0; i < 5; i ++) {
+		for (int i = 0; i < 4; i ++) {
 			SmoothMap();
 		}
 
 		int borderSize = 1;
-		int[,] borderedMap = new int[width + borderSize * 2,height + borderSize * 2];
+		int[,] borderedMap = new int[width + borderSize * 2,height];
 
 		for (int x = 0; x < borderedMap.GetLength(0); x ++) {
 			for (int y = 0; y < borderedMap.GetLength(1); y ++) {
-				if (x >= borderSize && x < width + borderSize && y >= borderSize && y < height + borderSize) {
-					borderedMap[x,y] = map[x-borderSize,y-borderSize];
+				if (x >= borderSize && x < width + borderSize) {
+					borderedMap[x,y] = map[x-borderSize,y];
 				}
 				else {
 					borderedMap[x,y] =1;
@@ -66,7 +68,7 @@ public class MapGenerator : MonoBehaviour {
 
 		for (int x = 0; x < width; x ++) {
 			for (int y = 0; y < height; y ++) {
-				if (x == 0 || x == width-1) {
+				if (x == 0 || x == width-1 || y <= 3) {
 					map[x,y] = 1;
 				}
 				else {
@@ -81,7 +83,7 @@ public class MapGenerator : MonoBehaviour {
 			for (int y = 0; y < height; y ++) {
 				int neighbourWallTiles = GetSurroundingWallCount(x,y);
 
-				if (neighbourWallTiles > 4)
+				if (neighbourWallTiles > 6)
 					map[x,y] = 1;
 				else if (neighbourWallTiles < 4)
 					map[x,y] = 0;
@@ -108,9 +110,6 @@ public class MapGenerator : MonoBehaviour {
 		return wallCount;
 	}
 
-	//public GameObject RiverBankCollider;
-	//BoxCollider[] BoxCollider;
-	//int i = 0;
 	public void AddColliders (){
 		for (int x = 0; x < map.GetLength (0); x++) {
 			for (int y = 0; y < map.GetLength (1); y++) {
@@ -119,21 +118,59 @@ public class MapGenerator : MonoBehaviour {
 					boxCollider.center = new Vector3 (x - width / 2, -1f, y - height / 2);
 					boxCollider.size = Vector3.one;
 					boxCollider.isTrigger = true;
-					//Instantiate(RiverBankCollider, new Vector3 (x - width / 2, -1f, y - height / 2), Quaternion.identity);
-					//RiverBankCollider.transform.parent = GameObject.Find ("MapGenerator").transform;
 				}
 			}
 		}
 	}
 
 	public void ClearMapColliders () {
-		//BoxCollider[] AllColliders = FindObjectOfType<BoxCollider> ();
 		BoxCollider[] AllColliders = gameObject.GetComponentsInChildren< BoxCollider >();
 		foreach (BoxCollider _collider in AllColliders) {
 			Destroy (_collider);
 		}
-		Debug.Log ("CLeared");
 
+		Debug.Log ("Cleared");
 	}
 
+	void UpdateMap() {
+		ScrollMap (ref map);
+
+		ClearMapColliders ();
+
+		int borderSize = 1;
+		int[,] borderedMap = new int[width + borderSize * 2,height];
+
+		for (int x = 0; x < borderedMap.GetLength(0); x ++) {
+			for (int y = 0; y < borderedMap.GetLength(1); y ++) {
+				if (x >= borderSize && x < width + borderSize) {
+					borderedMap[x,y] = map[x-borderSize,y];
+				}
+				else {
+					borderedMap[x,y] =1;
+				}
+			}
+		}
+
+		MeshGenerator meshGen = GetComponent<MeshGenerator>();
+		meshGen.GenerateMesh(borderedMap, 1);
+
+		AddColliders ();
+	}
+
+	void ScrollMap (ref int[,] map) {
+		for (int y = 1; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				//Shift map
+				map [x, y - 1] = map [x, y];
+				if (y == height - 1) {
+					if (x == 0 || x == width - 1) {
+						map [x, y] = 1;
+					} else {
+						int lfsr = (((((map [x, height / 2] + map [x, height / 2 - 1]) % 2) + map [x, height / 2 + 1]) % 2) + map [x, height / 2 - 2]) % 2;
+						map [x, y] = lfsr;
+					}
+				}
+			}
+		}
+	}
 }
