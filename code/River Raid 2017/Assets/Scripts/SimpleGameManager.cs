@@ -2,19 +2,21 @@
 using System.Collections;
 
 // Game States
-public enum GameState { INTRO, MAIN_MENU, PAUSED, GAME, CREDITS, HELP }
+public enum GameState { INTRO, MAIN_MENU, PAUSED, GAME, CREDITS, HELP, GAME_OVER }
+
 
 
 //Event delegates
 public delegate void OnStateChangeHandler(GameState state);
 public delegate void OnPlayerLivesChanged(int lives);
+public delegate void OnScoreChanged(int score);
 
 public class SimpleGameManager : MonoBehaviour
 {
-
-    //Event delegates
-    public event OnStateChangeHandler OnStateChange;
-    public event OnPlayerLivesChanged OnLivesChange;
+    //Events
+    public event OnStateChangeHandler OnStateChanged;
+    public event OnPlayerLivesChanged OnLivesChanged;
+    public event OnScoreChanged OnScoreChanged;
 
 
     public static SimpleGameManager instance = null;
@@ -23,6 +25,7 @@ public class SimpleGameManager : MonoBehaviour
     //Gameplay variables
     private float playerFuel;
     private int playerLives;
+    private int playerScore;
 
     void Awake()
     {
@@ -39,8 +42,10 @@ public class SimpleGameManager : MonoBehaviour
 
 
         //Initializing private variables
-        playerFuel = 100f;
+        gameState = GameState.INTRO;
+        playerFuel = 50f;
         playerLives = 3;
+        playerScore = 0;
         DontDestroyOnLoad(gameObject);
 
     }
@@ -55,6 +60,9 @@ public class SimpleGameManager : MonoBehaviour
             }
 
             return null;
+        } set
+        {
+            instance = null;
         }
     }
 
@@ -78,14 +86,34 @@ public class SimpleGameManager : MonoBehaviour
         }
         set
         {
-            playerLives += value;
-            OnLivesChange(playerLives);
+            playerLives = value;
+            OnLivesChanged(playerLives);
+        }
+    }
+
+    public int PlayerScore
+    {
+        get
+        {
+            return playerScore;
+        }
+        set
+        {
+            playerScore = value;
+            Debug.Log(playerScore);
+            OnScoreChanged(playerScore);
         }
     }
 
     public void SetGameState(GameState state)
     {
         gameState = state;
+
+        if(gameState == GameState.GAME_OVER)
+        {
+            GameObject.FindWithTag("GameOver").GetComponent<Canvas>().enabled = true;
+        }
+
        // OnStateChange(state);
     }
 

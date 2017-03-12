@@ -12,9 +12,9 @@ public class LivesLeft : MonoBehaviour {
 	void Awake () {
 
         lives = GetComponentsInChildren<Image>();
-        manager = FindObjectOfType<SimpleGameManager>().GetComponent<SimpleGameManager>();
+        manager = FindObjectOfType<SimpleGameManager>();
         AdjustUI(manager.PlayerLives);
-        manager.OnLivesChange += new OnPlayerLivesChanged(AdjustUI);
+        manager.OnLivesChanged += new OnPlayerLivesChanged(AdjustUI);
 	}
 	
     void AdjustUI(int amount)

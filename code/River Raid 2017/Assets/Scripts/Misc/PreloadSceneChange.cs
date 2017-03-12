@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PreloadSceneChange : MonoBehaviour {
 
+    public float sceneChangeTimer = 3.5f;
 	// Use this for initialization
 	void Start () {
 
@@ -18,7 +19,7 @@ public class PreloadSceneChange : MonoBehaviour {
 
     IEnumerator ChangeScene()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(sceneChangeTimer);
         SceneManager.LoadScene("MainScene");
     }
 }

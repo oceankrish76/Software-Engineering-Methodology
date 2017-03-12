@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class LevelColliderBehaviour : MonoBehaviour {
 
+
+    private SimpleGameManager manager;
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+        manager = FindObjectOfType<SimpleGameManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,7 +22,7 @@ public class LevelColliderBehaviour : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            FindObjectOfType<SimpleGameManager>().GetComponent<SimpleGameManager>().PlayerLives = -1;
+            manager.PlayerLives -= 1;
         }
             Destroy(other.gameObject);
 
