@@ -26,13 +26,22 @@ public class EnemyCollision : MonoBehaviour {
         if(other.tag == "Bullets")
         {
             manager.PlayerScore += scoreForKill;
-            AudioSource.PlayClipAtPoint(explosionSound, transform.position);
-            Instantiate(Explosion, transform.position, transform.rotation);
+            DestroyMe();
             Destroy(other.gameObject);
-            Destroy(gameObject);
-            
 
+
+        } else if(other.tag == "Player")
+        {
+            DestroyMe();
+            Destroy(other.gameObject);
         }
+    }
+
+    void DestroyMe()
+    {
+        AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+        Instantiate(Explosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
 

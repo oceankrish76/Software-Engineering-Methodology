@@ -813,27 +813,11 @@ Prefab:
     - target: {fileID: 223772265601600848, guid: 28c9d203e33f24f4aa1c96dfd55cd72e,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28c9d203e33f24f4aa1c96dfd55cd72e, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &788562676 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1846603543449910, guid: 28c9d203e33f24f4aa1c96dfd55cd72e,
-    type: 2}
-  m_PrefabInternal: {fileID: 788562675}
---- !u!114 &788562677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 788562676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd08fb6c2a3a44c478a2ffe0dd3b38bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &798403263
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,6 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cfafd16819cc64e86191cf2ccb4d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 2}
+  explosionSound: {fileID: 8300000, guid: 4e48c9712a9aa9b46aebade996fa7b70, type: 3}
 --- !u!1 &885163092
 GameObject:
   m_ObjectHideFlags: 0
