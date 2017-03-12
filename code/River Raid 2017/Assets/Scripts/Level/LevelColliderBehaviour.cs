@@ -24,7 +24,8 @@ public class LevelColliderBehaviour : MonoBehaviour {
         {
             manager.PlayerLives -= 1;
         }
-            Destroy(other.gameObject);
+
+        Destroy(other.gameObject);
 
     }
 }

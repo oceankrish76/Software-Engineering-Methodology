@@ -21,10 +21,9 @@ GameObject:
   - component: {fileID: 4201489928516402}
   - component: {fileID: 95476102415033682}
   - component: {fileID: 54443882741505166}
-  - component: {fileID: 114160768921091266}
   - component: {fileID: 65305863695385562}
   - component: {fileID: 114488136300325596}
-  - component: {fileID: 82816181715726012}
+  - component: {fileID: 114942688723844414}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -89,8 +88,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155639130512810}
-  m_LocalRotation: {x: 0.12278779, y: 0.6963643, z: 0.12278779, w: 0.6963643}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
+  m_LocalPosition: {x: 0.99, y: 0, z: 3.51}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 4422645126902992}
@@ -98,7 +97,7 @@ Transform:
   - {fileID: 4948544482785496}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 20}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
 --- !u!4 &4422645126902992
 Transform:
   m_ObjectHideFlags: 1
@@ -279,87 +278,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.024379782, y: -0.030957267, z: 0.051804565}
   m_Center: {x: -0.0014773596, y: 0.0011986236, z: 0.0039724433}
---- !u!82 &82816181715726012
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155639130512810}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243318153303181190, guid: 5c5191bfe900fb14d8113c6d083f61a9,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &95476102415033682
 Animator:
   serializedVersion: 3
@@ -377,18 +295,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114160768921091266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1155639130512810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c837ef0c006b65c459ffc51a2ec188af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
 --- !u!114 &114488136300325596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -403,3 +309,15 @@ MonoBehaviour:
   Explosion: {fileID: 100012, guid: 384371afbb4354cc9a3fc68eab303756, type: 2}
   explosionSound: {fileID: 8300000, guid: f3a184ed655e9ac4c814d40042387e45, type: 3}
   scoreForKill: 100
+--- !u!114 &114942688723844414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155639130512810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ee102087f5044c837a73bd8a65500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
