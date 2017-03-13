@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullets
   - GameOver
+  - PlayerRespawn
   layers:
   - Default
   - TransparentFX

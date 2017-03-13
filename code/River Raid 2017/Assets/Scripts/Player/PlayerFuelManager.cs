@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFuelManager : MonoBehaviour {
 
-    public float consumptionSpeed = 13f;
+    public float consumptionSpeed = 0.02f;
     private SimpleGameManager manager;
 	// Use this for initialization
 	void Start () {
@@ -14,9 +14,10 @@ public class PlayerFuelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         manager.PlayerFuel -= consumptionSpeed;
 
-        if(manager.PlayerFuel == 0f)
+        if(manager.PlayerFuel < 0.01f)
         {
             Destroy(gameObject);
         }

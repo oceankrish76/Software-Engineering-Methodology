@@ -122,5 +122,18 @@ public class SimpleGameManager : MonoBehaviour
         instance = null;
     }
 
-
+    public void PlayerDied()
+    {
+        PlayerLives -= 1;
+        if(playerLives >= 0)
+        {
+            Debug.Log("Trying to respawn");
+            playerFuel = 50f;
+            GameObject.FindWithTag("Respawn").GetComponent<PlayerRespawn>().respawnPlayer();
+        } else
+        {
+            SetGameState(GameState.GAME_OVER);
+        }
+   
+    }
 }

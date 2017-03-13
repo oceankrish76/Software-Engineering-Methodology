@@ -11,6 +11,6 @@ public class OnPlayerDestroyed : MonoBehaviour {
     {
         Instantiate(explosion, transform.position, transform.rotation);
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
-        FindObjectOfType<SimpleGameManager>().SetGameState(GameState.GAME_OVER);
+        FindObjectOfType<SimpleGameManager>().PlayerDied();
     }
 }
