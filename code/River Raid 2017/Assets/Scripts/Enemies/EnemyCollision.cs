@@ -37,7 +37,7 @@ public class EnemyCollision : MonoBehaviour {
         }
     }
 
-    void DestroyMe()
+    virtual protected void DestroyMe()
     {
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
         Instantiate(Explosion, transform.position, transform.rotation);
