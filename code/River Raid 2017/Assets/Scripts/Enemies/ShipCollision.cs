@@ -7,9 +7,21 @@ public class ShipCollision : EnemyCollision
 
     public GameObject Fire;
 
+    private int life = 2;
+
     protected override void DestroyMe()
     {
-        StartCoroutine(SinkTheShip());
+        life -= 1;
+        if (life == 0)
+        {
+            StartCoroutine(SinkTheShip());
+        } else
+        {
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity * 0.5f;
+            Instantiate(Fire, transform.position, transform.rotation);
+        }
+        
+
     }
 
     IEnumerator SinkTheShip()
