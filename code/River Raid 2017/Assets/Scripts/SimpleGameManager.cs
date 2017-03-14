@@ -18,7 +18,6 @@ public class SimpleGameManager : MonoBehaviour
     public event OnPlayerLivesChanged OnLivesChanged;
     public event OnScoreChanged OnScoreChanged;
 
-
     public static SimpleGameManager instance = null;
     public GameState gameState { get; private set; }
 
@@ -26,6 +25,9 @@ public class SimpleGameManager : MonoBehaviour
     private float playerFuel;
     private int playerLives;
     private int playerScore;
+    
+    private int scoreForNewLife = 500;
+    private int scoreSinceLifeGained = 0;
 
     void Awake()
     {
@@ -87,6 +89,12 @@ public class SimpleGameManager : MonoBehaviour
         set
         {
             playerLives = value;
+
+            if(playerLives > 4 )
+            {
+                playerLives = 4;
+            }
+
             OnLivesChanged(playerLives);
         }
     }
@@ -100,8 +108,12 @@ public class SimpleGameManager : MonoBehaviour
         set
         {
             playerScore = value;
-            Debug.Log(playerScore);
             OnScoreChanged(playerScore);
+            if((playerScore-scoreSinceLifeGained) > scoreForNewLife)
+            {
+                scoreSinceLifeGained = playerScore;
+                PlayerLives += 1;
+            }
         }
     }
 
