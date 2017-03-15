@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43767336, g: 0.4855467, b: 0.56582445, a: 1}
+  m_IndirectSpecularColor: {r: 0.43767387, g: 0.48554766, b: 0.56582505, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114903596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,8 +283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 60
-  height: 90
-  seed: Start game
+  height: 85
+  seed: River raid
   useRandomSeed: 0
   randomFillPercent: 50
 --- !u!4 &114903597
