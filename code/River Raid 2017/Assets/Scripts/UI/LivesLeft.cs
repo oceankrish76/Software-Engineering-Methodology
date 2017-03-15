@@ -15,7 +15,7 @@ public class LivesLeft : MonoBehaviour {
         manager = FindObjectOfType<SimpleGameManager>();
         AdjustUI(manager.PlayerLives);
         manager.OnLivesChanged += new OnPlayerLivesChanged(AdjustUI);
-	}
+ 	}
 	
     void AdjustUI(int amount)
     {
