@@ -12,7 +12,7 @@ public class ScoreUpdater : MonoBehaviour {
         manager = FindObjectOfType<SimpleGameManager>();
         manager.OnScoreChanged += new OnScoreChanged(UpdateScore);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		
