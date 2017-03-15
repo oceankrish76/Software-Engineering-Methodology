@@ -9,10 +9,7 @@ public class LevelColliderBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        if(FindObjectOfType<SimpleGameManager>())
-        {
-            manager = FindObjectOfType<SimpleGameManager>();
-        }
+        manager = FindObjectOfType<SimpleGameManager>();
 
     }
 	
