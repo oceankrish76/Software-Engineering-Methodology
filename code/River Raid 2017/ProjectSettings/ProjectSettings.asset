@@ -12,7 +12,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Balmora
   productName: River Raid 2017
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 533db2960da1df74c923488d952b95b1, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
   m_ShowUnitySplashScreen: 1
