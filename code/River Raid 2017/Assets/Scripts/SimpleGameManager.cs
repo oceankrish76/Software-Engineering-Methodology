@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 // Game States
@@ -29,10 +28,6 @@ public class SimpleGameManager : MonoBehaviour
     
     private int scoreForNewLife = 500;
     private int scoreSinceLifeGained = 0;
-
-
-	//changing
-	private string playerName;
 
     void Awake()
     {
@@ -153,15 +148,4 @@ public class SimpleGameManager : MonoBehaviour
         }
    
     }
-	public string PlayerName
-	{
-		get {
-			return playerName;
-
-		} set {
-			playerName = value;
-		}
-
-	}
-
 }
