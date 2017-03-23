@@ -31,17 +31,15 @@ public class MeshGenerator : MonoBehaviour {
 			}
 		}
 
-		Mesh mesh = new Mesh();
+       
+        Mesh mesh = new Mesh();
 		GetComponent<MeshFilter>().mesh = mesh;
 
 		mesh.vertices = vertices.ToArray();
 		mesh.triangles = triangles.ToArray();
-		mesh.RecalculateNormals();
+		mesh.RecalculateNormals(); 
 
-		//MeshCollider meshCol = GetComponent<MeshCollider>();
-		//meshCol.sharedMesh = mesh;
-
-		CreateWallMesh ();
+        CreateWallMesh ();
 	}
 
 	void CreateWallMesh() {

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43767336, g: 0.4855467, b: 0.56582445, a: 1}
+  m_IndirectSpecularColor: {r: 0.43767336, g: 0.48554665, b: 0.565824, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 114903600}
   - component: {fileID: 114903599}
   - component: {fileID: 114903601}
+  - component: {fileID: 114903602}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -282,8 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3ca43edbcdbf54498664ee5480972f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 60
-  height: 90
+  width: 30
+  height: 45
+  squareSize: 2
   seed: Start map
   useRandomSeed: 0
   randomFillPercent: 50
@@ -362,6 +364,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e3133bfa8de9540b644f828f989a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &114903602
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 114903595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!1 &181223971
 GameObject:
   m_ObjectHideFlags: 0

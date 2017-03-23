@@ -8,6 +8,8 @@ public class MapGenerator : MonoBehaviour {
 	public int width;
 	public int height;
 
+    public float squareSize = 5f;
+
 	public string seed;
 	public bool useRandomSeed;
 
@@ -18,7 +20,19 @@ public class MapGenerator : MonoBehaviour {
 
 	void Start() {
 		GenerateMap();
+
+       // StartCoroutine(UpdateScreen());
 	}
+
+    //This could be used to redraw instead of update    
+    IEnumerator UpdateScreen()
+    {
+        while(true)
+        {
+            UpdateMap();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
 
 	void Update() {
 		UpdateMap ();
@@ -31,7 +45,7 @@ public class MapGenerator : MonoBehaviour {
 		map = new int[width,height];
 		RandomFillMap();
 
-		ClearMapColliders ();
+		//ClearMapColliders ();
 
 		for (int i = 0; i < 4; i ++) {
 			SmoothMap();
@@ -52,9 +66,9 @@ public class MapGenerator : MonoBehaviour {
 		}
 
 		MeshGenerator meshGen = GetComponent<MeshGenerator>();
-		meshGen.GenerateMesh(borderedMap, 1);
+		meshGen.GenerateMesh(borderedMap, squareSize);
 
-		AddColliders ();
+	//	AddColliders ();
 
 	}
 
@@ -167,7 +181,7 @@ public class MapGenerator : MonoBehaviour {
 	void UpdateMap() {
 		ScrollMap (ref map);
 
-		ClearMapColliders ();
+		//ClearMapColliders ();
 
 		for (int i = 0; i < 4; i++) {
 			SmoothUpdatedMap ();
@@ -188,9 +202,15 @@ public class MapGenerator : MonoBehaviour {
 		}
 
 		MeshGenerator meshGen = GetComponent<MeshGenerator>();
-		meshGen.GenerateMesh(borderedMap, 1);
+		meshGen.GenerateMesh(borderedMap, squareSize);
 
-		AddColliders ();
+        MeshCollider meshCol = GetComponent<MeshCollider>();
+        MeshFilter newMesh = GetComponent<MeshGenerator>().walls;
+        newMesh.mesh.RecalculateBounds();
+        meshCol.sharedMesh = newMesh.mesh;
+        
+
+      // AddColliders ();
 	}
 
 	void ScrollMap (ref int[,] map) {
