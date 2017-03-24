@@ -25,7 +25,9 @@ public class SimpleGameManager : MonoBehaviour
     private float playerFuel;
     private int playerLives;
     private int playerScore;
-    
+
+    private string playerName;
+
     private int scoreForNewLife = 500;
     private int scoreSinceLifeGained = 0;
 
@@ -62,19 +64,34 @@ public class SimpleGameManager : MonoBehaviour
             }
 
             return null;
-        } set
+        }
+        set
         {
             instance = null;
         }
     }
 
+    public string PlayerName
+    {
+        get
+        {
+            return playerName;
+        }
+        set
+        {
+            playerName = value;
+        }
+    }
 
     public float PlayerFuel
     {
-        get {
+        get
+        {
             return playerFuel;
 
-        } set {
+        }
+        set
+        {
             playerFuel = value;
         }
 
@@ -90,7 +107,7 @@ public class SimpleGameManager : MonoBehaviour
         {
             playerLives = value;
 
-            if(playerLives > 4 )
+            if (playerLives > 4)
             {
                 playerLives = 4;
             }
@@ -109,7 +126,7 @@ public class SimpleGameManager : MonoBehaviour
         {
             playerScore = value;
             OnScoreChanged(playerScore);
-            if((playerScore-scoreSinceLifeGained) > scoreForNewLife)
+            if ((playerScore - scoreSinceLifeGained) > scoreForNewLife)
             {
                 scoreSinceLifeGained = playerScore;
                 PlayerLives += 1;
@@ -121,12 +138,12 @@ public class SimpleGameManager : MonoBehaviour
     {
         gameState = state;
 
-        if(gameState == GameState.GAME_OVER)
+        if (gameState == GameState.GAME_OVER)
         {
             GameObject.FindWithTag("GameOver").GetComponent<Canvas>().enabled = true;
         }
 
-       // OnStateChange(state);
+        // OnStateChange(state);
     }
 
     public void OnApplicationQuit()
@@ -137,15 +154,16 @@ public class SimpleGameManager : MonoBehaviour
     public void PlayerDied()
     {
         PlayerLives -= 1;
-        if(playerLives >= 0)
+        if (playerLives >= 0)
         {
             Debug.Log("Trying to respawn");
             playerFuel = 50f;
             GameObject.FindWithTag("Respawn").GetComponent<PlayerRespawn>().respawnPlayer();
-        } else
+        }
+        else
         {
             SetGameState(GameState.GAME_OVER);
         }
-   
+
     }
 }
