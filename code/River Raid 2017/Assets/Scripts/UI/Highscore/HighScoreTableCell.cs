@@ -16,9 +16,14 @@ namespace Tacticsoft.Examples
         public Text _playername;
         public Text _playerscore;
 
-        public void SetRowNumber(int rowNumber)
+        public void SetPlayerScore(int score)
         {
-            _playername.text = "Player " + rowNumber.ToString();
+            Debug.Log(score);
+            _playerscore.text = score.ToString();
+        }
+        public void SetPlayerName(string name)
+        {
+            _playername.text = name;
         }
 
         private int m_numTimesBecameVisible;

@@ -451,8 +451,9 @@ GameObject:
   m_Component:
   - component: {fileID: 578035696}
   - component: {fileID: 578035695}
+  - component: {fileID: 578035697}
   m_Layer: 0
-  m_Name: TableViewController
+  m_Name: Contollers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -486,6 +487,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &578035697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578035694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e40b9ef59d34645b7b7af081735865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &584442434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +1987,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2126209809}
         m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 578035697}
+        m_MethodName: Save
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

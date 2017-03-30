@@ -77,9 +77,11 @@ public class SimpleGameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GAME_OVER:
+            //something      
+                break;
+            case GameState.GAME:
                 InitializeVariables();
                 break;
-
             default:
                 //do nothing
                 break;

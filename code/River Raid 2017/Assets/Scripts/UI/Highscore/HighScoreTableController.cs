@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Tacticsoft;
 
 namespace Tacticsoft.Examples
 {
-    //An example implementation of a class that communicates with a TableView
     public class HighScoreTableController : MonoBehaviour, ITableViewDataSource
     {
         public HighScoreTableCell m_cellPrefab;
         public TableView m_tableView;
 
+
+
         public int m_numRows;
         private int m_numInstancesCreated = 0;
+        private List<Highscore> highscores;
 
         //Register as the TableView's delegate (required) and data source (optional)
         //to receive the calls
         void Start()
         {
             m_tableView.dataSource = this;
-        }
-
-        public void SendBeer()
-        {
-            Application.OpenURL("https://www.paypal.com/cgi-bin/webscr?business=contact@tacticsoft.net&cmd=_xclick&item_name=Beer%20for%20TSTableView&currency_code=USD&amount=5.00");
+            highscores = FindObjectOfType<SaveAndLoadHighscores>().Load();
+            m_numRows = highscores.Count;
         }
 
         #region ITableViewDataSource
@@ -46,9 +46,15 @@ namespace Tacticsoft.Examples
             if (cell == null)
             {
                 cell = (HighScoreTableCell)GameObject.Instantiate(m_cellPrefab);
-                cell.name = "VisibleCounterCellInstance_" + (++m_numInstancesCreated).ToString();
+                cell.name = "highscore1" + (++m_numInstancesCreated).ToString();
             }
-            cell.SetRowNumber(row);
+    
+            if(m_numInstancesCreated < m_numRows)
+            {
+                cell.SetPlayerName(highscores[m_numInstancesCreated].name);
+                cell.SetPlayerScore(highscores[m_numInstancesCreated].score);
+            }
+
             return cell;
         }
 
