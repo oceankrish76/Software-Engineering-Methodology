@@ -94,6 +94,12 @@ public class SimpleGameManager : MonoBehaviour
         playerFuel = 50f;
         playerLives = 3;
         playerScore = 0;
+        //Spawning the player
+        if(gameState == GameState.GAME)
+        {
+            GameObject.FindWithTag("Respawn").GetComponent<PlayerRespawn>().respawnPlayer();
+        }
+
     }
 
     public string PlayerName
