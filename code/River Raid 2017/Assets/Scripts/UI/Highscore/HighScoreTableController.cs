@@ -10,9 +10,7 @@ namespace Tacticsoft.Examples
         public HighScoreTableCell m_cellPrefab;
         public TableView m_tableView;
 
-
-
-        public int m_numRows;
+        public int m_numRows = 0;
         private int m_numInstancesCreated = 0;
         private List<Highscore> highscores;
 

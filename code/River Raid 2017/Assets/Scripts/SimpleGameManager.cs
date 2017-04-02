@@ -2,7 +2,7 @@
 using System.Collections;
 
 // Game States
-public enum GameState { INTRO, MAIN_MENU, PAUSED, GAME, CREDITS, HELP, GAME_OVER }
+public enum GameState { INTRO, MENU, PAUSED, GAME, CREDITS, HELP, GAME_OVER }
 
 
 
@@ -76,8 +76,8 @@ public class SimpleGameManager : MonoBehaviour
     {
         switch (newState)
         {
-            case GameState.GAME_OVER:
-            //something      
+            case GameState.GAME_OVER:      
+                GameObject.FindWithTag("GameOver").GetComponent<Canvas>().enabled = true;
                 break;
             case GameState.GAME:
                 InitializeVariables();
@@ -169,10 +169,7 @@ public class SimpleGameManager : MonoBehaviour
     {
         gameState = state;
 
-        if (gameState == GameState.GAME_OVER)
-        {
-            GameObject.FindWithTag("GameOver").GetComponent<Canvas>().enabled = true;
-        }
+        Debug.Log("GameState changed to: " + gameState);
 
         OnStateChanged(state);
     }

@@ -7,6 +7,6 @@ using UnityEngine;
 
 [System.Serializable]
 public class WeaponTypes  {
-    public GameObject defaultWeapon;
-    public GameObject pickupWeapon;
+    public Weapon defaultWeapon;
+    public Weapon pickupWeapon;
 }

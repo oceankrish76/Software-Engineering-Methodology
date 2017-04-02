@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class OnMenuSceneLoad : MonoBehaviour {
 
-
     private SimpleGameManager manager;
     
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         if(FindObjectOfType<SimpleGameManager>())
         {
             manager = FindObjectOfType<SimpleGameManager>();
         }
-		
+
+        manager.SetGameState(GameState.MENU);
 	}
 	
 	// Update is called once per frame
