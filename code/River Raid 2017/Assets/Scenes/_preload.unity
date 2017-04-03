@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 1030469057}
   - component: {fileID: 1030469059}
   - component: {fileID: 1030469058}
+  - component: {fileID: 1030469060}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -588,6 +589,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1030469056}
+--- !u!114 &1030469060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1030469056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f7b491913b54723a5b6e84b27eb2b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1317049261
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,10 +709,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325125361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5b8987c34a1a043a4ea60a9ce415e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 17f7b491913b54723a5b6e84b27eb2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: MainScene
 --- !u!114 &1325125364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,7 +752,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1325125363}
-        m_MethodName: Trigger
+        m_MethodName: OnSubmitClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
