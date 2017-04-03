@@ -37,7 +37,7 @@ public class Greetings : MonoBehaviour {
 	public void OnContinueGameClicked()
 	{
 		Debug.Log ("Clicked");
-		SceneManager.LoadScene("MainScene");
+		SceneManager.LoadScene("MainMenu");
 		//Application.LoadLevel("MainScene");
 	}
 }
