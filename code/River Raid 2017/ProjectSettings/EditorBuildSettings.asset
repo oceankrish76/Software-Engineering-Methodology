@@ -10,4 +10,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/greetings.unity
+=======
+    path: Assets/Scenes/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/Scoreboard.unity
+>>>>>>> 7bb5228e2d8bd3d5e01225ec3a44590f4dcbd269

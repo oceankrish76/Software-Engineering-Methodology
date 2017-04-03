@@ -28,4 +28,11 @@ public class LivesLeft : MonoBehaviour {
             lives[i].enabled = true;
         }
     }
+
+
+    void OnDestroy()
+    {
+        // Unsubscribing from events when the scene is unloaded
+        manager.OnLivesChanged -= AdjustUI;
+    }
 }

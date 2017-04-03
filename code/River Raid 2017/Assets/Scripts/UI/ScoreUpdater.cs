@@ -22,4 +22,10 @@ public class ScoreUpdater : MonoBehaviour {
     {
         GetComponent<Text>().text = score.ToString();
     }
+
+    void OnDestroy()
+    {
+        // Unsubscribing from events when the scene is unloaded
+        manager.OnScoreChanged -= UpdateScore;
+    }
 }

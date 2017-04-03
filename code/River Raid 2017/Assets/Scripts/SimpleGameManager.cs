@@ -2,19 +2,19 @@
 using System.Collections;
 
 // Game States
-public enum GameState { INTRO, MAIN_MENU, PAUSED, GAME, CREDITS, HELP, GAME_OVER }
+public enum GameState { INTRO, MENU, PAUSED, GAME, CREDITS, HELP, GAME_OVER }
 
 
 
 //Event delegates
-public delegate void OnStateChangeHandler(GameState state);
+public delegate void OnStateChanged(GameState state);
 public delegate void OnPlayerLivesChanged(int lives);
 public delegate void OnScoreChanged(int score);
 
 public class SimpleGameManager : MonoBehaviour
 {
     //Events
-    public event OnStateChangeHandler OnStateChanged;
+    public event OnStateChanged OnStateChanged;
     public event OnPlayerLivesChanged OnLivesChanged;
     public event OnScoreChanged OnScoreChanged;
 
@@ -47,9 +47,10 @@ public class SimpleGameManager : MonoBehaviour
 
         //Initializing private variables
         gameState = GameState.INTRO;
-        playerFuel = 50f;
-        playerLives = 3;
-        playerScore = 0;
+        InitializeVariables();
+        //Assigning events
+        OnStateChanged += new OnStateChanged(HandleStateChanges);
+        //ONLY ONE INSTANCE
         DontDestroyOnLoad(gameObject);
 
     }
@@ -69,6 +70,36 @@ public class SimpleGameManager : MonoBehaviour
         {
             instance = null;
         }
+    }
+
+    void HandleStateChanges(GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.GAME_OVER:      
+                GameObject.FindWithTag("GameOver").GetComponent<Canvas>().enabled = true;
+                break;
+            case GameState.GAME:
+                InitializeVariables();
+                break;
+            default:
+                //do nothing
+                break;
+        }
+
+    }
+
+    void InitializeVariables()
+    {
+        playerFuel = 50f;
+        playerLives = 3;
+        playerScore = 0;
+        //Spawning the player
+        if(gameState == GameState.GAME)
+        {
+            GameObject.FindWithTag("Respawn").GetComponent<PlayerRespawn>().respawnPlayer();
+        }
+
     }
 
     public string PlayerName
@@ -138,12 +169,9 @@ public class SimpleGameManager : MonoBehaviour
     {
         gameState = state;
 
-        if (gameState == GameState.GAME_OVER)
-        {
-            GameObject.FindWithTag("GameOver").GetComponent<Canvas>().enabled = true;
-        }
+        Debug.Log("GameState changed to: " + gameState);
 
-        // OnStateChange(state);
+        OnStateChanged(state);
     }
 
     public void OnApplicationQuit()

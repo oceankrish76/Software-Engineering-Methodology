@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 54168912006308902}
   - component: {fileID: 136935795452930858}
   - component: {fileID: 114094099550376868}
+  - component: {fileID: 114538526233738814}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullets
@@ -138,6 +139,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -10
+--- !u!114 &114538526233738814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1279015815261606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c196f3f28f46b749a6b6d75eecb874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSound: {fileID: 8300000, guid: a87bcd7b97bc44f48ba772102e40b286, type: 3}
 --- !u!136 &136935795452930858
 CapsuleCollider:
   m_ObjectHideFlags: 1

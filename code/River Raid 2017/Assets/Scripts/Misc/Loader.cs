@@ -10,6 +10,7 @@ public class Loader : MonoBehaviour
 
     void Awake()
     {
+        Screen.SetResolution(600, 900, false);
         //Check if a GameManager has already been assigned to static variable GameManager.instance or if it's still null
         if (SimpleGameManager.instance == null)
         {

@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour {
             for (int i = 0; i < spawnCount; i++)
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(spawnRange.x-4, spawnRange.x), spawnRange.y, Random.Range(-spawnRange.z, spawnRange.z));
-                Quaternion spawnRotation = Enemy.transform.rotation;
+                Quaternion spawnRotation = gameObject.transform.rotation;
                 Instantiate(Enemy, spawnPosition, spawnRotation);
                 yield return new WaitForSeconds(spawnWait);
             }

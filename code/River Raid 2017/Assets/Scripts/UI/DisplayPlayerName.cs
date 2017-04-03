@@ -7,14 +7,12 @@ using UnityEngine.UI;
 public class DisplayPlayerName : MonoBehaviour {
 
     private SimpleGameManager manager;
-    private string name;
+    private string playerName;
     void Start()
     {
-
         manager = FindObjectOfType<SimpleGameManager>();
-        name = manager.PlayerName;
-        GetComponent<Text>().text = name;
-
+        playerName = manager.PlayerName;
+        GetComponent<Text>().text = playerName;
 
     }
 }

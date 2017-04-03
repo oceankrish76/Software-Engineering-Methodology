@@ -133,7 +133,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346000041077100}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.2497456, y: -0.22450638, z: 1.0414065}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4659581060823048}
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d2a198567ae6b4283ba68ea9d358b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  consumptionSpeed: 0.01
+  consumptionSpeed: 0.02
 --- !u!114 &114726612770903984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,9 +297,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableWeapons:
-    defaultWeapon: {fileID: 1279015815261606, guid: eebcac1eb9549ba44b4a4a601f5c0e78,
+    defaultWeapon: {fileID: 114538526233738814, guid: eebcac1eb9549ba44b4a4a601f5c0e78,
       type: 2}
     pickupWeapon: {fileID: 0}
+  ShotSpawn: {fileID: 4134938549635160}
 --- !u!198 &198330370383300254
 ParticleSystem:
   m_ObjectHideFlags: 1

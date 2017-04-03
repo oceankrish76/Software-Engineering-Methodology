@@ -4,33 +4,81 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour {
+public class PlayerInput : MonoBehaviour
+{
 
     public float moveSpeed = 50.0f;
     public float rotationSpeed = 1.0f;
-    public Transform shotSpawn;
 
     public float fireRate = 0.0f;
     private float nextFire;
 
     Rigidbody rb;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
+
+        //Respawn invulnerability
+        StartCoroutine(Respawning());
 
     }
 
+
+
+    //Sets all colliders on or off
+    void SetColliderStatus(bool active)
+    {
+        foreach (Collider c in GetComponents<Collider>())
+        {
+            c.enabled = active;
+        }
+    }
+
+    //When respawning, the player is invulnerable for a few seconds
+    IEnumerator Respawning()
+    {
+        SetColliderStatus(false);
+        StartCoroutine(RespawnBlink());
+        yield return new WaitForSeconds(2f);
+        SetColliderStatus(true);
+    }
+
+    IEnumerator RespawnBlink()
+    {
+        Color color1 = GetComponent<Renderer>().material.color;
+        Color color2 = color1;
+        color2.a = 0;
+        color2.g = 255;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            GetComponent<Renderer>().material.color = color2;
+            yield return new WaitForSeconds(0.5f);
+            GetComponent<Renderer>().material.color = color1;
+            yield return new WaitForSeconds(0.5f);
+        }
+
+    }
+
+
+
+
+    //Actual movement functions
+    //Update handles only fire
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(GetComponent<PlayerWeapons>().availableWeapons.defaultWeapon, shotSpawn.position, shotSpawn.rotation);
+            GetComponent<PlayerWeapons>().FireCurrentWeapon();
         }
     }
 
-    void FixedUpdate () {
+    //Fixed update for physics related stuff such as movement
+    void FixedUpdate()
+    {
 
         //TODO: check if player is alive
 
