@@ -28,7 +28,7 @@ public class SimpleGameManager : MonoBehaviour
 
     private string playerName;
 
-    private int scoreForNewLife = 500;
+    private int scoreForNewLife = 7000;
     private int scoreSinceLifeGained = 0;
 
     void Awake()
