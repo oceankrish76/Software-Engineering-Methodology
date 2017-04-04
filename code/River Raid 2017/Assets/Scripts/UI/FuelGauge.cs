@@ -8,22 +8,52 @@ public class FuelGauge : MonoBehaviour
 
     private Slider fuelGauge;
     private SimpleGameManager manager;
-    // Use this for initialization
+    private float fuelLeft;
+
+    private bool isPlayingSound = false;
+
     void Awake()
     {
         fuelGauge = GetComponent<Slider>();
         manager = Object.FindObjectOfType<SimpleGameManager>();
+        //Initializing routines
+        if (manager)
+        {
+            fuelLeft = manager.GetComponent<SimpleGameManager>().PlayerFuel;
+            StartCoroutine(FuelLevelWarning());
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(manager)
+        if (manager)
         {
-            fuelGauge.value = manager.GetComponent<SimpleGameManager>().PlayerFuel;
+            fuelLeft = manager.GetComponent<SimpleGameManager>().PlayerFuel;
+            fuelGauge.value = fuelLeft;
         }
-     
+
     }
 
+    //Since there's no real need to check this every frame,
+    //let's save some on performance
+    IEnumerator FuelLevelWarning()
+    {
+        while(true)
+        {
+            Debug.Log(fuelLeft);
+            if (fuelLeft < 20f && !isPlayingSound)
+            {
+                Debug.Log("Playing fuel critical sound");
+                GetComponent<AudioSource>().Play();
+                isPlayingSound = true;
+            }
+            else if (fuelLeft > 20f && isPlayingSound)
+            {
+                GetComponent<AudioSource>().Stop();
+                isPlayingSound = false;
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
 
+    }
 }
