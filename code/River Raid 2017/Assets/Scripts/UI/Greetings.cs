@@ -7,28 +7,20 @@ using UnityEngine.UI;
 
 
 public class Greetings : MonoBehaviour {
-	public GameObject window;
-	public Text messageField;
 
-	public void Show(string message){
-		messageField.text = message;
-		window.SetActive (true);
-
-
-	}
-
-	public void Hide(){
-		window.SetActive (false);
-	}
+	public GameObject nameField;
 	//for players name
 	private SimpleGameManager manager;
 	private string name;
+	private string playerName;
+
+
 	void Start()
 	{
 
 		manager = FindObjectOfType<SimpleGameManager>();
 		name = manager.PlayerName;
-		GetComponent<Text>().text = name;
+		nameField.GetComponent<Text>().text = "Hello " + name + "!";
 
 
 	}
