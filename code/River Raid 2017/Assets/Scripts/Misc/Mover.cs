@@ -6,10 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Mover: MonoBehaviour
 {
-    public float speed;
+    public float forceX = 0f;
+    public float forceY = 0f;
+    public float forceZ = 0f;
 
     void Start()
     {
-        GetComponent<Rigidbody>().velocity = transform.forward * speed;
+        GetComponent<Rigidbody>().AddForce(forceX, forceY, forceZ, ForceMode.Impulse);
     }
 }

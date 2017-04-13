@@ -40,7 +40,6 @@ public class FuelGauge : MonoBehaviour
     {
         while(true)
         {
-            Debug.Log(fuelLeft);
             if (fuelLeft < 20f && !isPlayingSound)
             {
                 Debug.Log("Playing fuel critical sound");

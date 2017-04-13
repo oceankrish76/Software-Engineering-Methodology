@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114094099550376868}
   - component: {fileID: 114538526233738814}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: EnemyFighterBullet
   m_TagString: Bullets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceX: 0
   forceY: 0
-  forceZ: 5
+  forceZ: -5
 --- !u!114 &114538526233738814
 MonoBehaviour:
   m_ObjectHideFlags: 1

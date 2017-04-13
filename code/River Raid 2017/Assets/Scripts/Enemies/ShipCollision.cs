@@ -31,17 +31,8 @@ public class ShipCollision : EnemyCollision
 
         
         GetComponent<Rigidbody>().drag = 3;
+        GetComponentInChildren<Animator>().SetBool("sinking", true);
 
-        /* transform.position = new Vector3(transform.position.x, -1f, transform.position.z);
-         int i = 0;
-         while(i < 50)
-         {
-             float currentX = transform.rotation.x;
-             transform.Rotate(new Vector3(currentX + 1f, 0, 0));
-             ++i;
-             yield return new WaitForEndOfFrame();
-         }
-         */
         yield return new WaitForSeconds(1);
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
         Instantiate(Explosion, transform.position, transform.rotation);

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43767387, g: 0.48554766, b: 0.56582505, a: 1}
+  m_IndirectSpecularColor: {r: 0.43767336, g: 0.48554665, b: 0.565824, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -709,11 +709,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1256006600671254, guid: bca6abfe334ac804095584bc5682c294, type: 2}
-  spawnRange: {x: 1, y: 0, z: 4}
+  spawnRange: {x: 0, y: 0, z: 8}
+  spawnOffset: {x: 3, y: 0, z: 2}
   spawnCount: 3
-  spawnWait: 1
+  spawnWait: 2
   startWait: 2
-  waveWait: 5
+  waveWait: 6
 --- !u!1 &584442434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1104373132
 Transform:
   m_ObjectHideFlags: 0
@@ -1678,8 +1679,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e7730959fef16429ca7f9014ea64c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1216101295700498, guid: d59aeba26e2b5c34b87ce772e4506cf6, type: 2}
-  spawnRange: {x: 7, y: 0, z: 4}
+  Enemy: {fileID: 0}
+  spawnRange: {x: 0, y: 0, z: 8}
+  spawnOffset: {x: 4, y: 0, z: 4}
   spawnCount: 2
   spawnWait: 4
   startWait: 3
@@ -1712,7 +1714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1155639130512810, guid: 717c81bdc2ed2dc41897806311128540, type: 2}
-  spawnRange: {x: 7, y: 0, z: 6}
+  spawnRange: {x: 0, y: 0, z: 6}
+  spawnOffset: {x: 3, y: 0, z: 0}
   spawnCount: 2
   spawnWait: 0.5
   startWait: 2
@@ -2092,7 +2095,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1856250335185350, guid: 62120730310ace548adb243b6c0bd182, type: 2}
-  spawnRange: {x: 3, y: 0, z: 6}
+  spawnRange: {x: 0, y: 0, z: 8}
+  spawnOffset: {x: 3, y: 0, z: 3}
   spawnCount: 1
   spawnWait: 1
   startWait: 4
@@ -2531,7 +2535,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2555,7 +2559,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &1620398898
 Transform:
   m_ObjectHideFlags: 0
