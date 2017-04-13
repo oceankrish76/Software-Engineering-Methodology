@@ -1,23 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyWeaponController : MonoBehaviour
 {
 
-    public Weapon shot;
+    public Weapon weapon;
     public Transform shotSpawn;
-    public float fireRate;
+    public float fireDelayMax;
     public float delay;
 
-    private AudioSource audioSource;
+    private SimpleGameManager manager;
+
+
+    private List<Weapon> shotsFired = new List<Weapon>();
 
     void Start()
     {
-        InvokeRepeating("Fire", delay, fireRate);
+        manager = FindObjectOfType<SimpleGameManager>();
+        StartCoroutine(Fire());
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        shot.Fire(shotSpawn);
+        yield return new WaitForSecondsRealtime(delay);
+        while(true)
+        {
+            weapon.Fire(shotSpawn, gameObject);
+            yield return new WaitForSecondsRealtime(Random.Range(1f, fireDelayMax));
+        }
     }
+
+
 }

@@ -25,6 +25,7 @@ public class SimpleGameManager : MonoBehaviour
     private float playerFuel;
     private int playerLives;
     private int playerScore;
+    public bool playerIsAlive { get; private set; }
 
     private string playerName;
 
@@ -94,13 +95,17 @@ public class SimpleGameManager : MonoBehaviour
         playerFuel = 50f;
         playerLives = 3;
         playerScore = 0;
+        playerIsAlive = false;
         //Spawning the player
         if(gameState == GameState.GAME)
         {
             GameObject.FindWithTag("Respawn").GetComponent<PlayerRespawn>().respawnPlayer();
+            playerIsAlive = true;
         }
 
     }
+
+
 
     public string PlayerName
     {
@@ -182,11 +187,13 @@ public class SimpleGameManager : MonoBehaviour
     public void PlayerDied()
     {
         PlayerLives -= 1;
+        playerIsAlive = false;
         if (playerLives >= 0)
         {
             Debug.Log("Trying to respawn");
             playerFuel = 50f;
             GameObject.FindWithTag("Respawn").GetComponent<PlayerRespawn>().respawnPlayer();
+            playerIsAlive = true;
         }
         else
         {

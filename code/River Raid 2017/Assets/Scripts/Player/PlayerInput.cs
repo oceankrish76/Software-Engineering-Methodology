@@ -13,19 +13,19 @@ public class PlayerInput : MonoBehaviour
     public float fireRate = 0.0f;
     private float nextFire;
 
-    Rigidbody rb;
+    private Rigidbody rb;
+    private SimpleGameManager manager;
 
     // Use this for initialization
     void Start()
     {
+        manager = FindObjectOfType<SimpleGameManager>();
         rb = GetComponent<Rigidbody>();
 
         //Respawn invulnerability
         StartCoroutine(Respawning());
 
     }
-
-
 
     //Sets all colliders on or off
     void SetColliderStatus(bool active)
@@ -72,7 +72,10 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            GetComponent<PlayerWeapons>().FireCurrentWeapon();
+            if(manager.playerIsAlive)
+            {
+                GetComponent<PlayerWeapons>().FireCurrentWeapon();
+            }
         }
     }
 
@@ -91,5 +94,16 @@ public class PlayerInput : MonoBehaviour
         rb.position = new Vector3(rb.position.x, 0.0f, rb.position.z);
 
         rb.rotation = Quaternion.Euler(0.0f, 180.0f, rb.velocity.x * rotationSpeed);
+    }
+
+
+    //Collision with bullets
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyBullets")
+        {
+
+            Destroy(gameObject);
+        }
     }
 }

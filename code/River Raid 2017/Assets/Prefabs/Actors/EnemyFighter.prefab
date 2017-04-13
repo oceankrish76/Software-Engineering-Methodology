@@ -229,9 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b915b5d342e7047a7e61b304d1fc90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 114538526233738814, guid: dd74258b2145bda4db17add3a7408b9c, type: 2}
+  weapon: {fileID: 114433666383410470, guid: dd74258b2145bda4db17add3a7408b9c, type: 2}
   shotSpawn: {fileID: 4018251921367984}
-  fireRate: 1
+  fireDelayMax: 3
   delay: 2
 --- !u!114 &114182894189340720
 MonoBehaviour:
@@ -258,9 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c837ef0c006b65c459ffc51a2ec188af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceX: 0
-  forceY: 0
-  forceZ: -2
+  speed: -3
 --- !u!198 &198217308231573810
 ParticleSystem:
   m_ObjectHideFlags: 1

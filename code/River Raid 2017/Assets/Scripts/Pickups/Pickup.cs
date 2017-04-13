@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Pickup : MonoBehaviour
 {
@@ -18,8 +19,16 @@ public class Pickup : MonoBehaviour
     public int scoreForDestroying = -100;
     public GameObject explosion;
     public AudioClip explosionSound;
-    
 
+
+    //Custom editor variables
+    [HideInInspector]
+    public float refuelRate;
+    [HideInInspector]
+    public int refuelScore;
+
+
+    //Private stuff
     private SimpleGameManager manager;
 
     // Use this for initialization
@@ -60,7 +69,7 @@ public class Pickup : MonoBehaviour
             
         }
 
-        if (other.gameObject.tag == "Bullets")
+        if (other.gameObject.tag == "PlayerBullets" || other.gameObject.tag == "EnemyBullets")
         {
             AudioSource.PlayClipAtPoint(explosionSound, transform.position);
             Instantiate(explosion, transform.position, transform.rotation);
@@ -74,12 +83,36 @@ public class Pickup : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && pickupType == PickupTypes.Pickup_Fuel)
         {
-            manager.PlayerFuel += 0.05f;
-            manager.PlayerScore += 5;
+            manager.PlayerFuel += refuelRate;
+            manager.PlayerScore += refuelScore;
         }
 
     }
 
 
 
+}
+
+
+//Custom editor class  
+[CustomEditor(typeof(Pickup))]
+[CanEditMultipleObjects]
+public class PickupEditor : Editor
+{
+    void OnEnable()
+    {
+
+    }
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+        var pickup = target as Pickup;
+
+        if(pickup.pickupType == Pickup.PickupTypes.Pickup_Fuel)
+        {
+            pickup.refuelRate = EditorGUILayout.FloatField("Refuel rate", pickup.refuelRate);
+            pickup.refuelScore = EditorGUILayout.IntField("Refuel score", pickup.refuelScore);
+        }
+        
+    }
 }

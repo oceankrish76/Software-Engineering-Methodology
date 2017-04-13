@@ -23,7 +23,7 @@ public class EnemyCollision : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Bullets")
+        if(other.tag == "PlayerBullets")
         {
             manager.PlayerScore += scoreForKill;
             DestroyMe();

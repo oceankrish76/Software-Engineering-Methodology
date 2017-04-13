@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1856250335185350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.41074, y: 0, z: 4.2503185}
+  m_LocalPosition: {x: -7.0890102, y: 5.374675, z: 3.400343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000889794492630}
@@ -194,9 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a19c36f2fabe9408339aa23d252ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountX: 0.5
-  amountY: 0.5
-  amountZ: 0.5
+  tumble: 2
 --- !u!114 &114714945542165790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,7 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupType: 0
-  scoreForPickup: 100
-  scoreForDestroying: -100
+  scoreForPickup: 5
+  scoreForDestroying: -200
   explosion: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 2}
   explosionSound: {fileID: 8300000, guid: a4517251995a9784e992c5c90d4cce6e, type: 3}
+  refuelRate: 0.1
+  refuelScore: 1
