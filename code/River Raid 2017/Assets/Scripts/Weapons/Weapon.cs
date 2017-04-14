@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
             AudioSource.PlayClipAtPoint(weaponSound, transform.position);
         }
     }
-
+    //FIXME: this is not really used as it is not working.
     public virtual void Fire(Transform position, GameObject owner)
     {
         Instantiate(gameObject, position.position, position.rotation);

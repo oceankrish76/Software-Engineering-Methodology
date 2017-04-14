@@ -477,9 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c837ef0c006b65c459ffc51a2ec188af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceX: 0
-  forceY: 0
-  forceZ: -5
+  speed: -0.5
 --- !u!114 &114744923506475076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -492,6 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 1296249662430062, guid: 5e6079d46f08ce94bb1e0c7ef39ffaa3, type: 2}
+  scoreUI: {fileID: 1599161101003508, guid: fba92269f05a4494f830adb87fb912c2, type: 2}
   explosionSound: {fileID: 8300000, guid: 4e48c9712a9aa9b46aebade996fa7b70, type: 3}
   scoreForKill: 400
   Fire: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 2}

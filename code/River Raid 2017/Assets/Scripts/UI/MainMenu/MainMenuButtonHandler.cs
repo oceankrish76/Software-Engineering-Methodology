@@ -10,7 +10,10 @@ public class MainMenuButtonHandler : MonoBehaviour
 
     public void OnNewGameClicked()
     {
+        iTween.CameraFadeAdd();
+        iTween.CameraFadeTo(1f, .15f);
         SceneManager.LoadScene("MainScene");
+
     }
 
     public void OnOptionsClicked()

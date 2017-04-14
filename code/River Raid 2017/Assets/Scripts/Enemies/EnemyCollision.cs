@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyCollision : MonoBehaviour {
 
     public GameObject Explosion;
+    public GameObject scoreUI;
     public AudioClip explosionSound;
     public int scoreForKill = 100;
 
@@ -25,6 +27,8 @@ public class EnemyCollision : MonoBehaviour {
     {
         if(other.tag == "PlayerBullets")
         {
+            GameObject scorevisual = Instantiate(scoreUI, (transform.position+ new Vector3(0,2,0)), Quaternion.identity);
+            scorevisual.GetComponentInChildren<Text>().text = scoreForKill.ToString();
             manager.PlayerScore += scoreForKill;
             DestroyMe();
             Destroy(other.gameObject);
@@ -34,7 +38,15 @@ public class EnemyCollision : MonoBehaviour {
         {
             DestroyMe();
             Destroy(other.gameObject);
+
         }
+
+        //FIXME? Enemies collide with their own shots
+        /*else if(other.tag == "EnemyBullets")
+        {
+            DestroyMe();
+            Destroy(other.gameObject);
+        }*/
     }
 
     virtual protected void DestroyMe()

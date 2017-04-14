@@ -10,13 +10,15 @@ public class LoadLevel : MonoBehaviour
 
     public void Trigger()
     {
+        iTween.CameraFadeAdd();
+        iTween.CameraFadeTo(1f, 0.4f);
         StartCoroutine(LoadScene());
     }
 
-    //Gives us some time to play button sounds etc
+    //Gives us some time to play button sounds/fade out etc
     IEnumerator LoadScene()
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene(levelName);
     }
 }
