@@ -5,7 +5,7 @@ using UnityEngine;
 public class HomingMissile : Weapon
 {
 
-    public float missileSpeed = 0.02f;
+    public float missileSpeed = 3f;
     public GameObject explosion;
 
     private SimpleGameManager manager;
@@ -34,7 +34,7 @@ public class HomingMissile : Weapon
         if (player)
         {
             iTween.LookUpdate(gameObject, player.transform.position, .1f);
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, missileSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, missileSpeed * Time.deltaTime);
         }
         else
         {

@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#else
+
+# endif
 using System.Collections;
 using System.Collections.Generic;
 
@@ -59,7 +63,7 @@ public class EnemyWeaponController : MonoBehaviour
     }
 
 }
-
+#if UNITY_EDITOR
 //Custom editor class  
 [CustomEditor(typeof(EnemyWeaponController))]
 [CanEditMultipleObjects]
@@ -81,3 +85,4 @@ public class EnemyWeaponEditor: Editor
 
     }
 }
+#endif

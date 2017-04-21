@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSound: {fileID: 0}
   fireRate: 0.5
-  missileSpeed: 0.02
+  missileSpeed: 2.5
   explosion: {fileID: 1198610981842298, guid: 0f33333161f0eca4dbcbb2e21222230b, type: 2}
 --- !u!114 &114337867690693274
 MonoBehaviour:

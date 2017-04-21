@@ -18,12 +18,16 @@ public class MainMenuButtonHandler : MonoBehaviour
 
     public void OnOptionsClicked()
     {
-
+        iTween.CameraFadeAdd();
+        iTween.CameraFadeFrom(1f, .3f);
+       // StartCoroutine("FadeFrom");
     }
 
     public void OnCreditsClicked()
     {
-
+        iTween.CameraFadeAdd();
+        iTween.CameraFadeFrom(1f, .3f);
+        //StartCoroutine("FadeFrom");
     }
 
     public void OnQuitClicked()
@@ -33,5 +37,11 @@ public class MainMenuButtonHandler : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ToggleSounds()
+    { 
+        bool setState = AudioListener.pause ? false : true; 
+        AudioListener.pause = setState;
     }
 }

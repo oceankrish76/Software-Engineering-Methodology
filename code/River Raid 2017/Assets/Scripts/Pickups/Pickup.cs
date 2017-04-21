@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#else
+
+#endif
+
 
 public class Pickup : MonoBehaviour
 {
@@ -93,6 +98,8 @@ public class Pickup : MonoBehaviour
 
 }
 
+#if UNITY_EDITOR
+
 
 //Custom editor class  
 [CustomEditor(typeof(Pickup))]
@@ -116,3 +123,4 @@ public class PickupEditor : Editor
         
     }
 }
+#endif
