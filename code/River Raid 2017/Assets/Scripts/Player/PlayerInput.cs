@@ -16,10 +16,13 @@ public class PlayerInput : MonoBehaviour
     private Rigidbody rb;
     private SimpleGameManager manager;
 
+    private GameObject pauseMenu;
+
     // Use this for initialization
     void Start()
     {
         manager = FindObjectOfType<SimpleGameManager>();
+        pauseMenu = GameObject.FindWithTag("PauseMenu");
         rb = GetComponent<Rigidbody>();
 
         //Respawn invulnerability
@@ -45,6 +48,8 @@ public class PlayerInput : MonoBehaviour
         SetColliderStatus(true);
     }
 
+
+    //TODO: this is garbage
     IEnumerator RespawnBlink()
     {
         Color color1 = GetComponent<Renderer>().material.color;
@@ -75,6 +80,19 @@ public class PlayerInput : MonoBehaviour
             if(manager.playerIsAlive)
             {
                 GetComponent<PlayerWeapons>().FireCurrentWeapon();
+            }
+        }
+
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if (Time.timeScale == 1.0f)
+            {
+                Time.timeScale = 0f;
+                pauseMenu.GetComponent<Canvas>().enabled = true;
+            } else
+            {
+                pauseMenu.GetComponent<Canvas>().enabled = false;
+                Time.timeScale = 1.0f;
             }
         }
     }
