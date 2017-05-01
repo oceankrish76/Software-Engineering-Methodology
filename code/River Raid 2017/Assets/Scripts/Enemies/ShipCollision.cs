@@ -33,7 +33,7 @@ public class ShipCollision : EnemyCollision
         GetComponent<Rigidbody>().drag = 3;
         GetComponentInChildren<Animator>().SetBool("sinking", true);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
         Instantiate(Explosion, transform.position, transform.rotation);
         Destroy(gameObject);

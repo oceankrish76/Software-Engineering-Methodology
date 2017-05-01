@@ -69,8 +69,8 @@ public class SaveAndLoadHighscores : MonoBehaviour
             highscorelist.Add(data);
             //Sorting by highscores
             highscorelist.Sort((player1, player2) => player1.score.CompareTo(player2.score));
-            //If we have more than 50 entries, remove the last one
-            if (highscorelist.Count > 50)
+            //If we have more than 11 entries, remove the last one
+            while(highscorelist.Count > 11)
             {
                 highscorelist.RemoveAt(highscorelist.Count - 1);
             }

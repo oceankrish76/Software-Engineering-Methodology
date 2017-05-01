@@ -4,9 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bullets
   - GameOver
   - PlayerRespawn
+  - Undefined
+  - EnemyBullets
+  - PlayerBullets
+  - Bullets
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class RotateObject : MonoBehaviour {
 
-    public float amountX = 1.0f;
-    public float amountY = 1.0f;
-    public float amountZ = 1.0f;
+    public float tumble = .5f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	void Update () {
+    private Rigidbody rb;
 
-        gameObject.transform.Rotate(amountX, amountY, amountZ);
-	}
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.angularVelocity = Random.insideUnitSphere * tumble;
+    }
 }
